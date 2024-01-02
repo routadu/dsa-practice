@@ -62,6 +62,19 @@ public class SinglyLinkedList {
         size++;
     }
 
+    private Node insertRecursive(int num, int pos, Node currNode) {
+        if (pos == 0) {
+            size++;
+            return new Node(num, currNode);
+        }
+        currNode.next = insertRecursive(num, pos - 1, currNode.next);
+        return currNode;
+    }
+
+    public void insertRecursive(int num, int pos) {
+        head = insertRecursive(num, pos, head);
+    }
+
     public void delete(int num) {
 
         Node currNode = head, prevNode = null;
